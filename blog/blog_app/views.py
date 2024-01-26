@@ -11,6 +11,15 @@ class PostList(generic.ListView):
 def index(request):
     return render(request,'index.html')
 
+def contact_us(request):
+    return render(request,'contact.html')
+
+def about(request):
+    return render(request,'about.html')
+
+def service(request):
+    return render(request,'service.html')
+
 class PostDetail(generic.DetailView):
     model = Post
     template_name = 'post_detail.html'
