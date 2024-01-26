@@ -11,7 +11,7 @@
   <meta name="description" content="" />
   <meta name="author" content="" />
 
-  <title>Fregg</title>
+  <title>CyberWebSolutions</title>
 
   <!-- slider stylesheet -->
   <link rel="stylesheet" type="text/css"
@@ -38,10 +38,10 @@
         <header class="header_section">
             <div class="container">
             <nav class="navbar navbar-expand-lg custom_nav-container pt-3">
-                <a class="navbar-brand mr-5" href="index.html">
+                <a class="navbar-brand mr-5" href="{% url 'home' %}">
                 <img src="images/logo.png" alt="">
                 <span>
-                    Fregg
+                    CyberWebSolutions
                 </span>
                 </a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
@@ -53,6 +53,9 @@
                     <ul class="navbar-nav  ">
                     <li class="nav-item active">
                         <a class="nav-link" href="{% url 'home' %}">Home <span class="sr-only">(current)</span></a>
+                    </li>
+                    <li class="nav-item active">
+                        <a class="nav-link" href="{% url 'blogs' %}">Blog</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="{% url 'about' %}"> About </a>
@@ -78,13 +81,63 @@
       <!-- footer section -->
     <section class="container-fluid footer_section">
         <p>
-        Copyright &copy; 2019 All Rights Reserved By
-        <a href="https://html.design/">Free Html Templates</a>
+        Copyright &copy; 2023 All Rights Reserved By
+        <a href="#">CyberWebSolutions</a>
         </p>
     </section>
     <!-- footer section -->
 
     <script type="text/javascript" src="{% static 'js/jquery-3.4.1.min.js' %}"></script>
     <script type="text/javascript" src="{% static 'js/bootstrap.js' %}"></script>
+    <!-- Popper.js first, then Bootstrap JS -->
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/js/bootstrap.min.js" integrity="sha384-oesi62hOLfzrys4LxRF63OJCXdXDipiYWBnvTl9Y9/TRlw5xlKIEHpNyvvDShgf/" crossorigin="anonymous"></script>
+<script type="text/javascript">
+  const like = document.getElementById('like_btn');
+  const singleClick = () => {
+    like.style.fontWeight = 'bold';
+    like.style.background = '#bbe1fa';
+    like.style.color = '#1b262c';
+    like.innerHTML = "✓ Liked";
+  }
+  const doubleClick = () => {
+    like.style.fontWeight = 'normal';
+    like.style.background = '#3282b8';
+    like.style.color = '#fff';
+    like.innerHTML = "Like";
+  }
+  var clickCount = 0;
+  like.addEventListener('click', function() {
+    clickCount++;
+    if (clickCount === 1) {
+      singleClickTimer = setTimeout(function() {
+        clickCount = 0;
+        singleClick();
+      }, 400);
+    } else if (clickCount === 2) {
+      clearTimeout(singleClickTimer);
+      clickCount = 0;
+      doubleClick();
+    }
+  }, false);
+  // show and hide the replies
+  const reply = (rep) => {
+    console.log('hi');
+    // debugger;
+    var res = document.getElementById(rep);
+    console.log(res);
+    if (res.className == "replies") {
+      res.className = "thapa_show";
+      res.style.WebkitTransition = 'all 0.3s ease';
+      // res.style.transition = 'all 0.3s ease';
+      // console.log(thapa_show);
+    } else if (res.className == 'thapa_show') {
+      // res.className = " ";
+      console.log('thapa show');
+      res.className = "replies";
+    }
+  }
+</script>
 </body>
 </html>
+

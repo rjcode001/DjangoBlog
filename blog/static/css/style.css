@@ -46,6 +46,7 @@ body {
   background-color: black;
   position: sticky;
   top: 0;
+  z-index: +1;
 
 }
 
@@ -54,6 +55,7 @@ body {
   height: 100vh;
   background-image: url(../images/hero-bg.jpg);
   background-size: cover;
+  z-index: -1;
 }
 
 .sub_page .hero_area {

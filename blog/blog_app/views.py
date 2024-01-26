@@ -1,12 +1,7 @@
 from django.shortcuts import render,HttpResponse
-
-# Create your views here.
 from django.views import generic
-from .models import Post
+from .models import *
 
-class PostList(generic.ListView):
-    queryset = Post.objects.filter(status=1).order_by('-created_on')
-    template_name = 'index.html'
 
 def index(request):
     return render(request,'index.html')
@@ -20,6 +15,11 @@ def about(request):
 def service(request):
     return render(request,'service.html')
 
-class PostDetail(generic.DetailView):
-    model = Post
-    template_name = 'post_detail.html'
+def posts(request):
+
+    context = {'posts':Post.objects.all(),'category':Category.objects.all()}
+    return render(request,'blogs.html',context)
+
+
+
+

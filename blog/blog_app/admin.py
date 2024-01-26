@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Post
+from .models import *
 from django import forms
 from ckeditor.widgets import CKEditorWidget
 from django.utils.html import format_html
@@ -14,4 +14,7 @@ class PostAdmin(admin.ModelAdmin):
 
     display_image_thumbnail.short_description = 'Image'  # Set a user-friendly column header for the image
 
-admin.site.register(Post, PostAdmin)
+admin.site.register(Category)
+admin.site.register(Subcategory)
+
+
